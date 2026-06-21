@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Recipe Delight</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #7a5531;
+      --primary-light: #ffeedd;
+      --secondary: #c97c5d;
+      --accent: #b79863;
+      --card: #fffaf4;
+      --background: #f9f5f0;
+      --shadow: 0 8px 36px #7a553133, 0 1.5px 8px #b7986335;
+      --shadow-hover: 0 12px 40px #c97c5d22, 0 2px 10px #b7986340;
+      --transition: 0.32s cubic-bezier(0.33, 1, 0.68, 1);
+      --radius: 22px;
+    }
+    body {
+      background: var(--background);
+      color: var(--primary);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+    }
+    .menu-recipes-btn {
+      position: fixed;
+      top: 26px;
+      right: 26px;
+      padding: 15px 30px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      color: white;
+      font-size: 1.08rem;
+      text-decoration: none;
+      border-radius: 13px;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+      z-index: 1020;
+      transition: background var(--transition), transform var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .menu-recipes-btn:hover {
+      background: linear-gradient(90deg, var(--accent), var(--primary));
+      transform: scale(1.045) translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+    header {
+      background: linear-gradient(120deg, var(--primary) 70%, var(--secondary) 100%);
+      color: #fff;
+      text-align: center;
+      padding: 64px 24px 44px 24px;
+      box-shadow: 0 4px 22px #7a553120;
+      border-radius: 0 0 28px 28px;
+      position: relative;
+      margin-bottom: 35px;
+      overflow: hidden;
+    }
+    header::after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0; right: 0; bottom: -44px;
+      height: 88px;
+      background: var(--background);
+      border-radius: 100% 100% 0 0;
+      z-index: 1;
+      opacity: 0.85;
+    }
+    header h1 {
+      font-size: 2.7rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+      position: relative;
+      z-index: 2;
+      text-shadow: 0 3px 16px #573e2470;
+    }
+    header p {
+      font-size: 1.2rem;
+      font-weight: 500;
+      max-width: 670px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      text-shadow: 0 1px 5px #573e2433;
+    }
+    .container {
+      max-width: 1120px;
+      margin: 0 auto 50px auto;
+      padding: 38px 16px 32px 16px;
+      position: relative;
+      z-index: 5;
+    }
+    .team-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px 32px;
+      justify-content: center;
+      margin-bottom: 54px;
+    }
+    .profile {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 44px 38px 28px 38px;
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+      transition: box-shadow var(--transition), transform var(--transition);
+      position: relative;
+      animation: fadeInUp 0.85s both;
+    }
+  
+    .profile img {
+      width: 138px;
+      height: 138px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid var(--accent);
+      margin-bottom: 19px;
+      background: #fff8ee;
+      box-shadow: 0 2px 12px #b7986320;
+    }
+    .profile h2 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 13px;
+    }
+    .profile p {
+      font-size: 1rem;
+      color: #533c22;
+      margin-bottom: 24px;
+      min-height: 58px;
+    }
+    .profile-btn {
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      color: white;
+      padding: 11px 28px;
+      border: none;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
+      box-shadow: 0 1px 8px #c97c5d28;
+    }
+    .profile-btn:hover {
+      background: linear-gradient(90deg, var(--accent), var(--primary));
+      box-shadow: 0 6px 16px #b7986340;
+      transform: scale(1.06);
+    }
+    .message-box {
+      margin-top: 18px;
+      padding: 14px;
+      background: #f7ecdf;
+      border-radius: 8px;
+      border-left: 5px solid var(--primary);
+      font-size: 1rem;
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+      color: #876741;
+      box-shadow: 0 2px 12px #7a553114;
+      animation: fadeIn 0.6s;
+    }
+    .contact {
+      background: var(--primary-light);
+      padding: 44px 34px 38px 34px;
+      border-radius: 18px;
+      box-shadow: 0 3px 20px #c97c5d10;
+      text-align: center;
+      margin-top: 40px;
+    }
+    .contact h3 {
+      color: var(--primary);
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+    .contact p {
+      font-size: 1.12rem;
+      margin-bottom: 7px;
+      color: #5b4a36;
+      font-weight: 500;
+    }
+    .contact a {
+      color: var(--secondary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color var(--transition);
+    }
+    .contact a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+    .social-links {
+      margin-top: 26px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+    }
+    .social-link {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      width: 54px;
+      height: 54px;
+      color: white;
+      border-radius: 50%;
+      font-size: 1.45rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition), box-shadow var(--transition), transform 0.3s;
+      box-shadow: 0 2px 12px #b7986328;
+      border: 2.2px solid #fff4;
+    }
+    .social-link:hover {
+      background: linear-gradient(120deg, var(--secondary), var(--primary));
+      box-shadow: 0 7px 18px #c97c5d38;
+      transform: scale(1.12) translateY(-3px);
+    }
+    .facebook { background: #3b5998; }
+    .twitter { background: #1da1f2; }
+    .instagram {
+      background: radial-gradient(circle at 30% 30%, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+      background-size: 200% 200%;
+      animation: instagramMove 4s linear infinite;
+    }
+    .tiktok { background: #111; }
+    .pinterest { background: #bd081c; }
+    @keyframes instagramMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    footer {
+      text-align: center;
+      color: #a98669;
+      background: #fff8ef;
+      font-size: 1.06rem;
+      border-top: 1.8px solid #e5d3c0;
+      padding: 34px 0 18px 0;
+      letter-spacing: 0.2px;
+      margin-top: 60px;
+      box-shadow: 0 1.5px 12px #7a553112;
+    }
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(38px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @media (max-width: 1000px) {
+      .container, .team-container, .profile { padding: 15px; }
+      .team-container { flex-direction: column; align-items: center; }
+    }
+    @media (max-width: 600px) {
+      header { font-size: 90%; }
+      .container { padding: 7px; }
+      .profile { padding: 26px 7px; }
+      .contact { padding: 25px 8px 25px 8px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Menu Button -->
+  <a href="Menu.php" class="menu-recipes-btn">
+    <i class="fas fa-utensils"></i> Menu Recipes
+  </a>
+  <header>
+    <h1>About Us</h1>
+    <p>
+      We're passionate about food, photography, and sharing joy through recipes.<br>
+      <span style="font-size:1.07em;color:#ffecc8;text-shadow:0 2px 7px #b7986340;">Your kitchen’s next inspiration starts here.</span>
+    </p>
+  </header>
+  <div class="container">
+    <div class="team-container">
+      <!-- Nour Profile -->
+      <div class="profile">
+        <img src="nour.jpg" alt="Nour">
+        <h2>Hi, I'm Nour</h2>
+        <p>
+          A home cook who loves creating simple and tasty meals. Cooking is my passion, and I'm here to share recipes that bring joy to your table. Let's cook something delicious together!
+        </p>
+        <button class="profile-btn" onclick="nourMessage()">
+          <i class="fas fa-comment-alt"></i> Message from Nour
+        </button>
+        <div class="message-box" id="nour-msg"></div>
+      </div>
+      <!-- Sara Profile -->
+      <div class="profile">
+        <img src="sara.jpg" alt="Sara">
+        <h2>And I'm Sara</h2>
+        <p>
+          The photographer behind all the recipe pictures you see here. I love capturing the beauty of food and making every dish look as good as it tastes. Together, we bring you both flavor and visuals to enjoy!
+        </p>
+        <button class="profile-btn" onclick="saraMessage()">
+          <i class="fas fa-comment-alt"></i> Message from Sara
+        </button>
+        <div class="message-box" id="sara-msg"></div>
+      </div>
+    </div>
+    <!-- Contact & Social Media -->
+    <div class="contact">
+      <h3>Connect With Us</h3>
+      <p>Follow us on social media for daily recipes, tips, and behind-the-scenes content!</p>
+      <div class="social-links">
+        <a href="https://facebook.com/recipedelight" class="social-link facebook" target="_blank" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://twitter.com/recipedelight" class="social-link twitter" target="_blank" aria-label="Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://instagram.com/recipedelight" class="social-link instagram" target="_blank" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://tiktok.com/@recipedelight" class="social-link tiktok" target="_blank" aria-label="TikTok">
+          <i class="fab fa-tiktok"></i>
+        </a>
+        <a href="https://pinterest.com/recipedelight" class="social-link pinterest" target="_blank" aria-label="Pinterest">
+          <i class="fab fa-pinterest-p"></i>
+        </a>
+      </div>
+      <p style="margin-top: 25px;">Or email us at <a href="mailto:recipeweb@gmail.com">recipeweb@gmail.com</a></p>
+    </div>
+  </div>
+  <footer>
+    &copy; 2025 Recipe Delight. All rights reserved.
+  </footer>
+  <script>
+    // Messages for Nour
+    const nourMessages = [
+      "Welcome! I'm happy you're here ❤️",
+      "Let's make something tasty today 🍳",
+      "Cooking is love made visible 🧡",
+      "The secret ingredient is always love!",
+      "Good food = Good mood!",
+      "Anyone can cook - you just need to start!",
+      "My kitchen is my happy place 🏠"
+    ];
+	//start from first message
+    let nourIndex = 0;
+    function nourMessage() {
+	//find message box on the page
+      const msgBox = document.getElementById("nour-msg");
+      msgBox.innerHTML = `<i class="fas fa-quote-left"></i> ${nourMessages[nourIndex]} <i class="fas fa-quote-right"></i>`;
+	  // moves to next message(loops back to the start)
+      nourIndex = (nourIndex + 1) % nourMessages.length;
+	  //restart fadein effect for every new message
+      msgBox.style.animation = 'none';
+      void msgBox.offsetWidth;
+      msgBox.style.animation = 'fadeIn 0.5s ease';
+    }
+    // Messages for Sara
+    const saraMessages = [
+      "Hi there! I hope you love the food photos 📷",
+      "A great photo tells a tasty story! 📸",
+      "Every dish deserves to shine ✨",
+      "First we eat with our eyes... then our mouths!",
+      "Food styling is my passion!",
+      "The right lighting makes all the difference ☀️",
+      "I make food look as good as it tastes!"
+    ];
+    let saraIndex = 0;
+    function saraMessage() {
+      const msgBox = document.getElementById("sara-msg");
+      msgBox.innerHTML = `<i class="fas fa-quote-left"></i> ${saraMessages[saraIndex]} <i class="fas fa-quote-right"></i>`;
+      saraIndex = (saraIndex + 1) % saraMessages.length;
+      msgBox.style.animation = 'none';
+      void msgBox.offsetWidth;
+      msgBox.style.animation = 'fadeIn 0.5s ease';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fluffy Pancake Recipe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --brown: #6b4e2f;
+            --light-brown: #faf4ef;
+            --gold: #b79863;
+            --white: #fff;
+            --shadow: 0 4px 20px #9e7f5b33;
+            --accent: #b79863;
+            --dark-brown: #4a341e;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--light-brown);
+            color: var(--brown);
+            margin: 0;
+            padding: 28px;
+        }
+        .menu-recipes-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            z-index: 1100;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+        .menu-recipes-btn:hover {
+            background-color: var(--dark-brown);
+            transform: translateY(-2px);
+        }
+        .container {
+            max-width: 800px;
+            background: var(--white);
+            padding: 36px 32px 32px 32px;
+            margin: 60px auto 30px auto;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        h1, h2 {
+            color: var(--brown);
+            margin-bottom: 10px;
+        }
+        img {
+            width: 100%;
+            border-radius: 10px;
+            margin: 22px 0;
+            box-shadow: 0 2px 10px #0001;
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 14px;
+            background: #f8f2ea;
+            border-radius: 7px;
+            overflow: hidden;
+        }
+        table, th, td {
+            border: 1px solid #ccbca3;
+        }
+        th, td {
+            padding: 9px 8px;
+            font-size: 15px;
+        }
+        iframe {
+            width: 100%;
+            height: 350px;
+            border-radius: 12px;
+            margin-top: 18px;
+            border: none;
+            box-shadow: 0 1px 7px #a0806033;
+        }
+        /* Print button */
+        .print-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background: linear-gradient(90deg, var(--brown), var(--gold));
+            color: var(--white);
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            box-shadow: 0 2px 10px #a0806033;
+            cursor: pointer;
+            transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+            position: absolute;
+            top: 22px;
+            right: 22px;
+            z-index: 5;
+        }
+        .print-btn:hover {
+            background: linear-gradient(90deg, var(--gold), var(--brown));
+            box-shadow: 0 8px 32px #b7986340;
+            transform: scale(1.05);
+        }
+        @media print {
+            body { background: #fff !important; }
+            .print-btn, .menu-recipes-btn { display: none !important; }
+            .container { box-shadow: none !important; margin: 0; border-radius: 0; padding: 0; }
+        }
+        @media (max-width: 900px) {
+            .container { padding: 18px; }
+            .print-btn { top: 8px; right: 6px; }
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <!-- Menu Recipes Button -->
+    <a href="Menu.php" class="menu-recipes-btn">
+        <i class="fas fa-utensils"></i> Menu Recipes
+    </a>
+    <div class="container">
+        <!-- Print Button -->
+        <button class="print-btn" id="printBtn">
+            🖨️ Print This Recipe
+        </button>
+        <h1>Fluffy Pancake Recipe</h1>
+        <p>Light and fluffy pancakes that are perfect for breakfast with your favorite toppings.</p>
+        <img src="pancake.jpg" alt="Stack of fluffy pancakes">
+        <h2>Preparation Time</h2>
+        <ul>
+            <li>Total: 25 mins</li>
+            <li>Prep: 10 mins</li>
+            <li>Cook: 15 mins</li>
+        </ul>
+        <h2>Ingredients</h2>
+        <ul>
+            <li>1 1/2 cups all-purpose flour</li>
+            <li>3 1/2 tsp baking powder</li>
+            <li>1 tsp salt</li>
+            <li>1 tbsp white sugar</li>
+            <li>1 1/4 cups milk</li>
+            <li>1 egg</li>
+            <li>3 tbsp melted butter</li>
+        </ul>
+        <h2>Instructions</h2>
+        <ol>
+            <li>In a bowl, sift together the flour, baking powder, salt, and sugar.</li>
+            <li>Make a well in the center and pour in milk, egg, and melted butter. Mix until smooth.</li>
+            <li>Heat a lightly oiled griddle or frying pan over medium-high heat.</li>
+            <li>Pour or scoop the batter onto the griddle, using approximately 1/4 cup for each pancake.</li>
+            <li>Brown on both sides and serve hot with butter, syrup, or fruit.</li>
+        </ol>
+        <h2>Nutrition</h2>
+        <table>
+            <tr><th>Calories</th><td>220 kcal</td></tr>
+            <tr><th>Carbs</th><td>28 g</td></tr>
+            <tr><th>Protein</th><td>5 g</td></tr>
+            <tr><th>Fat</th><td>9 g</td></tr>
+        </table>
+        <h2>Watch the Recipe Video</h2>
+        <iframe src="https://www.youtube.com/embed/4zO87oc_r-c" 
+            title="Fluffy Pancakes Recipe Video" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
+    </div>
+    <script>
+        // jQuery print button handler
+        $(function() {
+            $("#printBtn").on('click', function() {
+                window.print();
+            });
+        });
+    </script>
+</body>
+</html>
